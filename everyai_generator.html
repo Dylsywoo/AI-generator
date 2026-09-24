@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EveryAI Generator</title>
-    <!-- Tailwind CSS CDN -->
+    <title>EveryAI - Next Revolutionary AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Canvas Confetti -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
@@ -25,7 +22,7 @@
 
         .card-border {
             border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
         }
 
         .history-card {
@@ -37,41 +34,41 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between p-4 sm:p-8 max-w-3xl mx-auto">
+<body class="min-h-screen flex flex-col justify-between p-4 sm:p-8 max-w-4xl mx-auto">
 
-    <!-- Main Interactive Area -->
-    <main class="flex-1 flex flex-col justify-center items-center my-8 sm:my-12 w-full">
+    <!-- Main Content Container -->
+    <main class="flex-1 flex flex-col justify-center items-center my-12 w-full">
         
-        <!-- Action Card -->
+        <!-- Interactive Launcher Card -->
         <div class="w-full bg-slate-50/80 rounded-3xl p-6 sm:p-12 card-border text-center relative overflow-hidden mb-8">
             
             <!-- Generate Button -->
-            <button id="generateBtn" onclick="generateAgent()" class="group relative inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-white transition-all duration-300 bg-slate-900 rounded-2xl hover:bg-black hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+            <button id="generateBtn" onclick="generateAgent()" class="group relative inline-flex items-center justify-center px-8 py-5 text-lg font-bold text-white transition-all duration-300 bg-slate-900 rounded-2xl hover:bg-black hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]">
                 <i data-lucide="sparkles" class="w-6 h-6 mr-3 text-amber-300 group-hover:rotate-12 transition-transform"></i>
                 <span>Create Next Revolutionary AI</span>
             </button>
 
-            <!-- Output Container -->
+            <!-- Agent Output Box -->
             <div id="outputContainer" class="mt-10 hidden transition-all duration-500">
                 <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
                     <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
                     Meet Your New Everything Assistant
                 </div>
 
-                <!-- Generated Name -->
+                <!-- Cutesy Name -->
                 <h1 id="agentName" class="text-5xl sm:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
-                    Bobe
+                    <!-- Dynamic Name -->
                 </h1>
 
-                <!-- Generated Elevator Pitch -->
+                <!-- Satirical Marketing Copy -->
                 <div class="bg-white p-6 sm:p-8 rounded-2xl card-border max-w-2xl mx-auto text-left relative group">
                     <p id="agentPitch" class="text-slate-700 text-lg sm:text-xl leading-relaxed font-normal">
-                        <!-- Pitch content dynamically inserted -->
+                        <!-- Dynamic Pitch -->
                     </p>
                     
                     <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
                         <span class="font-mono-code">Status: Fully Omnipresent</span>
-                        <button onclick="copyToClipboard()" class="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 font-medium transition-colors cursor-pointer">
+                        <button onclick="copyToClipboard()" class="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 font-medium transition-colors">
                             <i data-lucide="copy" class="w-3.5 h-3.5"></i>
                             <span id="copyText">Copy Pitch</span>
                         </button>
@@ -79,97 +76,96 @@
                 </div>
             </div>
 
-            <!-- Initial Placeholder Message -->
-            <div id="placeholder" class="mt-8 text-slate-400 text-sm font-medium">
+            <!-- Initial Placeholder -->
+            <div id="placeholder" class="mt-8 text-slate-400 text-sm">
                 Click the button above to spawn this week's life-changing digital companion.
             </div>
         </div>
 
-        <!-- History Log Section -->
+        <!-- History Log -->
         <div id="historySection" class="w-full hidden">
             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 px-2">Previously Created AI Assistants</h3>
             <div id="historyList" class="space-y-3"></div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="text-center text-xs text-slate-400 py-4 font-medium">
+    <!-- Simple Footer -->
+    <footer class="text-center text-xs text-slate-400 py-4">
         EveryAI — Empowering you to do nothing while an AI reads your entire computer.
     </footer>
 
     <script>
-        // Cutesy single-word AI names
+        lucide.createIcons();
+
+        // Expansive list of pointless, alien, or hyper-trendy AI names
         const names = [
-            "Bobe", "Bixby", "Muse", "Siri", "Pippa", "Kiki", "Mio", "Zuzu",
+            "Bobbe", "Bixby", "Muse", "Siri", "Pippa", "Kiki", "Mio", "Zuzu",
             "Nomi", "Ollie", "Coco", "Fifi", "Momo", "Lulu", "Tobi", "Rolo",
-            "Sola", "Juju", "Nori", "Poko", "Boop", "Milo", "Otis", "Yuki"
+            "Sola", "Juju", "Nori", "Poko", "Boop", "Milo", "Otis", "Yuki",
+            "Grok", "Qwen", "Loomi", "Pi", "Glitch", "Snack", "Floof", "Nix",
+            "Quirk", "Zippy", "Nim", "Spark", "Sploot", "Blip", "Fable", "Wisp"
         ];
 
-        // Generator templates
-        const Intros = [
-            "Meet {NAME}, your all-in-one digital companion designed to take over every single aspect of your life.",
-            "Say hello to {NAME} — the revolutionary AI that seamlessly sits inside your operating system and does literally everything for you.",
-            "Introducing {NAME}. We built an assistant so powerful you will never need to touch a keyboard again.",
-            "{NAME} is here, and it doesn't just help you work — it lives your life so you don't have to."
-        ];
+        // Opposites-that-are-the-same pitch templates
+        const PitchArchetypes = [
+            // Archetype 1: Ultra-Casual / Friendly Bestie
+            (name) => `Say hi to ${name}! ${name} isn't just an app; it's your new digital bestie who lives inside your operating system. It quietly reads all your personal texts, scans your private photos, and learns your daily routine so you never have to think again. Whether it's walking your dog, buying your groceries, or booking your flights, ${name} does literally everything for you while you relax.`,
 
-        const Actions = [
-            "It automatically reads all your private files, connects every app you own, and learns your deepest habits.",
-            "It quietly scans your messages, monitors your personal data, and takes complete control of your digital world.",
-            "By gently connecting to your entire device history, it instantly understands your needs before you do.",
-            "It seamlessly integrates with every software, bank account, and personal record on your computer."
-        ];
+            // Archetype 2: Enterprise / Synergistic Corporate
+            (name) => `Introducing ${name}: Enterprise-grade personal intelligence engineered to maximize human output. ${name} deeply integrates with every file, email account, and software key on your machine to fully automate your existence. From micro-managing your schedule and spending your savings to booking end-to-end flight itineraries, ${name} streamlines life into pure efficiency.`,
 
-        const EverythingClaims = [
-            "Whether it's walking your dog, ordering your groceries, spending your money, or booking your flights, {NAME} handles it all in seconds.",
-            "From booking complex flight itineraries and ordering dinner to paying your bills and chatting with your friends, {NAME} does it without asking.",
-            "It will manage your schedule, buy your clothes, book your holidays, answer your emails, and reorganize your whole life.",
-            "It effortlessly books your flights, walks your pets, manages your finances, and organizes your life down to the second."
-        ];
+            // Archetype 3: Existential Minimalist / Calm AI
+            (name) => `Meet ${name}. Designed around the concept of absolute digital stillness, ${name} gently takes full control of your computer so you don't have to interact with technology ever again. It silently processes your messages, manages your bank account, walks your dog, and books your next holiday without you raising a finger. Total harmony, zero effort.`,
 
-        const Closers = [
-            "Welcome to the effortless future — powered by {NAME}.",
-            "Sit back, relax, and let {NAME} run your existence.",
-            "{NAME}: Less thinking, more living.",
-            "Your life, completely streamlined and automated by {NAME}."
+            // Archetype 4: Hyper-Intelligent Next-Gen Tech
+            (name) => `${name} is here — powered by quantum-synthesized neural reasoning. We built an agent so advanced it completely replaces human agency. ${name} gainlessly scans your whole hard drive, hooks into every app you own, buys your clothes, and books your plane tickets before you even realize you wanted to travel. Welcome to the final assistant you will ever need.`
         ];
 
         let history = [];
+        let lastUsedName = "";
+        let lastUsedArchetype = -1;
 
-        function getRandomElement(arr) {
-            return arr[Math.floor(Math.random() * arr.length)];
+        function getRandomUniqueName() {
+            let selected;
+            do {
+                selected = names[Math.floor(Math.random() * names.length)];
+            } while (selected === lastUsedName && names.length > 1);
+            lastUsedName = selected;
+            return selected;
+        }
+
+        function getRandomUniqueArchetypeIndex() {
+            let selectedIndex;
+            do {
+                selectedIndex = Math.floor(Math.random() * PitchArchetypes.length);
+            } while (selectedIndex === lastUsedArchetype && PitchArchetypes.length > 1);
+            lastUsedArchetype = selectedIndex;
+            return selectedIndex;
         }
 
         function generateAgent() {
-            const name = getRandomElement(names);
-            
-            const intro = getRandomElement(Intros).replace(/{NAME}/g, name);
-            const action = getRandomElement(Actions);
-            const claim = getRandomElement(EverythingClaims).replace(/{NAME}/g, name);
-            const closer = getRandomElement(Closers).replace(/{NAME}/g, name);
+            const name = getRandomUniqueName();
+            const archetypeIndex = getRandomUniqueArchetypeIndex();
+            const fullPitch = PitchArchetypes[archetypeIndex](name);
 
-            const fullPitch = `${intro} ${action} ${claim} ${closer}`;
-
-            // Reveal output section
+            // Hide placeholder & Show output
             document.getElementById('placeholder').classList.add('hidden');
             const outputContainer = document.getElementById('outputContainer');
             outputContainer.classList.remove('hidden');
 
-            // Set content
+            // Render details
             document.getElementById('agentName').innerText = name;
             document.getElementById('agentPitch').innerText = fullPitch;
 
-            // Trigger confetti
-            if (window.confetti) {
-                confetti({
-                    particleCount: 35,
-                    spread: 55,
-                    origin: { y: 0.65 },
-                    colors: ['#0f172a', '#f59e0b', '#94a3b8']
-                });
-            }
+            // Trigger Confetti
+            confetti({
+                particleCount: 40,
+                spread: 60,
+                origin: { y: 0.7 },
+                colors: ['#0f172a', '#f59e0b', '#94a3b8']
+            });
 
-            // Record to history
+            // Add to history
             addToHistory(name, fullPitch);
         }
 
@@ -194,23 +190,14 @@
             const pitch = document.getElementById('agentPitch').innerText;
             const textToCopy = `${name} — ${pitch}`;
 
-            const tempInput = document.createElement('textarea');
-            tempInput.value = textToCopy;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-
-            const copyText = document.getElementById('copyText');
-            copyText.innerText = "Copied!";
-            setTimeout(() => {
-                copyText.innerText = "Copy Pitch";
-            }, 2000);
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const copyText = document.getElementById('copyText');
+                copyText.innerText = "Copied!";
+                setTimeout(() => {
+                    copyText.innerText = "Copy Pitch";
+                }, 2000);
+            });
         }
-
-        window.onload = function() {
-            lucide.createIcons();
-        };
     </script>
 </body>
 </html>
